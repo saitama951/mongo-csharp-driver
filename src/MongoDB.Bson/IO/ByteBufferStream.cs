@@ -420,12 +420,12 @@ namespace MongoDB.Bson.IO
             {
                 _position += 8;
             	return BinaryPrimitivesCompat.ReadDoubleLittleEndian(new ReadOnlySpan<byte>(segment.Array, segment.Offset, 8));
-	    }
+	   	    }
             else
             {
                 this.ReadBytes(_temp, 0, 8);
             	return BinaryPrimitivesCompat.ReadDoubleLittleEndian(_temp);
-	    }
+	        }
         }
 
         /// <inheritdoc/>
@@ -640,7 +640,7 @@ namespace MongoDB.Bson.IO
 
             var bytes = new byte[8];
             BinaryPrimitivesCompat.WriteDoubleLittleEndian(bytes, value);
-	    _buffer.SetBytes(_position, bytes, 0, 8);
+	        _buffer.SetBytes(_position, bytes, 0, 8);
 
             SetPositionAfterWrite(_position + 8);
         }

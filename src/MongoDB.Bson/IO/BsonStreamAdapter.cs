@@ -498,7 +498,7 @@ namespace MongoDB.Bson.IO
             ThrowIfDisposed();
             var bytes = new byte[8];
             BinaryPrimitivesCompat.WriteDoubleLittleEndian(bytes, value);
-	    _stream.Write(bytes, 0, 8);
+	        _stream.Write(bytes, 0, 8);
         }
 
         /// <inheritdoc/>
