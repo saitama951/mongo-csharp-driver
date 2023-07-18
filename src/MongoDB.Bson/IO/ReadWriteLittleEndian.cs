@@ -19,13 +19,13 @@ namespace MongoDB.Bson.IO
     // this class can be deleted once all our targeted frameworks have the needed methods 
     internal static class BinaryPrimitivesCompat 
     { 
-	public static double ReadDoubleLittleEndian(ReadOnlySpan<byte> source) 
-	{ 
-	    return BitConverter.Int64BitsToDouble(BinaryPrimitives.ReadInt64LittleEndian(source)); 
-	} 
-	public static void WriteDoubleLittleEndian(Span<byte> destination, double value) 
-	{ 
-	    BinaryPrimitives.WriteInt64LittleEndian(destination, BitConverter.DoubleToInt64Bits(value)); 
-	} 
+	    public static double ReadDoubleLittleEndian(ReadOnlySpan<byte> source) 
+	    { 
+	        return BitConverter.Int64BitsToDouble(BinaryPrimitives.ReadInt64LittleEndian(source)); 
+	    }
+	    public static void WriteDoubleLittleEndian(Span<byte> destination, double value) 
+	    { 
+	        BinaryPrimitives.WriteInt64LittleEndian(destination, BitConverter.DoubleToInt64Bits(value)); 
+	    } 
     } 
 }
