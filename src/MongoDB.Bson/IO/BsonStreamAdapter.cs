@@ -309,11 +309,7 @@ namespace MongoDB.Bson.IO
         {
             ThrowIfDisposed();
             this.ReadBytes(_temp, 0, 8);
-<<<<<<< HEAD
-            return BitConverter.Int64BitsToDouble(BinaryPrimitives.ReadInt64LittleEndian(_temp));
-=======
             return BinaryPrimitivesCompat.ReadDoubleLittleEndian(_temp);
->>>>>>> 011501817... refactored the code
         }
 
         /// <inheritdoc/>
@@ -501,13 +497,8 @@ namespace MongoDB.Bson.IO
         {
             ThrowIfDisposed();
             var bytes = new byte[8];
-<<<<<<< HEAD
-            BinaryPrimitives.WriteInt64LittleEndian(bytes, BitConverter.DoubleToInt64Bits(value));
-            _stream.Write(bytes, 0, 8);
-=======
             BinaryPrimitivesCompat.WriteDoubleLittleEndian(bytes, value);
-	    _stream.Write(bytes, 0, 8);
->>>>>>> 011501817... refactored the code
+	        _stream.Write(bytes, 0, 8);
         }
 
         /// <inheritdoc/>
