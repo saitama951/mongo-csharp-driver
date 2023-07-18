@@ -419,6 +419,7 @@ namespace MongoDB.Bson.IO
             if (segment.Count >= 8)
             {
                 _position += 8;
+<<<<<<< HEAD
                 return BitConverter.Int64BitsToDouble(BinaryPrimitives.ReadInt64LittleEndian(new ReadOnlySpan<byte>(segment.Array, segment.Offset, 8)));
             }
             else
@@ -427,6 +428,15 @@ namespace MongoDB.Bson.IO
                 var val = BinaryPrimitives.ReadInt64LittleEndian(_temp);
                 return BitConverter.Int64BitsToDouble(val);
             }
+=======
+            	return BinaryPrimitivesCompat.ReadDoubleLittleEndian(new ReadOnlySpan<byte>(segment.Array, segment.Offset, 8));
+	    }
+            else
+            {
+                this.ReadBytes(_temp, 0, 8);
+            	return BinaryPrimitivesCompat.ReadDoubleLittleEndian(_temp);
+	    }
+>>>>>>> 011501817... refactored the code
         }
 
         /// <inheritdoc/>
@@ -640,8 +650,13 @@ namespace MongoDB.Bson.IO
             PrepareToWrite(8);
 
             var bytes = new byte[8];
+<<<<<<< HEAD
             BinaryPrimitives.WriteInt64LittleEndian(bytes, BitConverter.DoubleToInt64Bits(value));
             _buffer.SetBytes(_position, bytes, 0, 8);
+=======
+            BinaryPrimitivesCompat.WriteDoubleLittleEndian(bytes, value);
+	    _buffer.SetBytes(_position, bytes, 0, 8);
+>>>>>>> 011501817... refactored the code
 
             SetPositionAfterWrite(_position + 8);
         }

@@ -33,7 +33,11 @@ namespace MongoDB.Driver.Core.Connections
             var bytes = new byte[12];
             BinaryPrimitives.WriteUInt32LittleEndian(new Span<byte>(bytes, 0, 4), OnOff);
             BinaryPrimitives.WriteUInt32LittleEndian(new Span<byte>(bytes, 0, 4), KeepAliveTime);
+<<<<<<< HEAD
             BinaryPrimitives.WriteUInt32LittleEndian(new Span<byte>(bytes, 0, 4), KeepAliveInterval);
+=======
+            BinaryPrimitives.WriteUInt32LittleEndian(new Span<byte>(bytes, 0, 8), KeepAliveInterval);
+>>>>>>> 011501817... refactored the code
             return bytes;
         }
     }
